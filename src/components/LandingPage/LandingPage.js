@@ -1,28 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './LandingPage.module.css';
-import {Link} from 'react-router-dom';
+import './LandingPage.css';
+import { Link } from 'react-router-dom';
 const LandingPage = () => (
-  <div>
-<div class="card text-center" style={{width:"30%",margin:"10px auto"}}>
-  <div class="card-header">
-    Featured
+  <div class="landing-page">
+    <h2 class="landing-title">StockBasket</h2>
+    <img class="landing-logo" src="https://cdn-icons-png.flaticon.com/512/6978/6978350.png"></img>
+    <div class="landing-content">
+      <div class="card text-center option-card">
+        <div class="card-header">
+          Client Login
+        </div>
+        <div class="card-body">
+          <p class="card-text">Welcome, Login as a Client</p>
+          <Link to="/login" href="#" class="btn btn-primary landing-button">Client Login</Link>
+        </div>
+      </div>
+      <div class="card text-center option-card">
+        <div class="card-header">
+          Vendor Login
+        </div>
+        <div class="card-body">
+          <p class="card-text">Welcome, Login as a Vendor</p>
+          <Link to="/vlogin" href="#" class="btn btn-primary landing-button">Vendor Login</Link>
+        </div>
+      </div>
+    </div>
+    <div class="landing-content-footer">
+        <label>Nikhil Khandelwal</label>
+        <label>Akshay Gupta</label>
+        <label>Ritwik Kumar Singh</label>
+      </div>
+
   </div>
-  <div class="card-body">
-    <p class="card-text">Welcome, login as Client</p>
-    <Link to="/login"href="#" class="btn btn-primary">Go somewhere</Link>
-  </div>
-</div>
-<div class="card text-center" style={{width:"30%",margin:"10px auto"}}>
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <p class="card-text">Welcome login as vendor</p>
-    <Link to="/login" href="#" class="btn btn-primary">Go somewhere</Link>
-  </div>
-</div>
-</div>
 );
 
 LandingPage.propTypes = {};

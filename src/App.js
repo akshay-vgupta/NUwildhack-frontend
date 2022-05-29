@@ -11,6 +11,7 @@ import StockList from './components/StockList/StockList';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import LandingPage from './components/LandingPage/LandingPage';
 import MyBasketPage from './components/MyBasketPage/MyBasketPage';
+import PrivateRouteVendor from './components/PrivateRouteVendor/PrivateRouteVendor';
 
 function App() {
   return (
@@ -28,6 +29,10 @@ function App() {
   <Route extact path ='/login' >
       <PrivateRoute/>
   </Route>
+  <Route extact path ='/vlogin' >
+    <PrivateRouteVendor></PrivateRouteVendor>
+  </Route>
+
   <Route extact path ='/mybasket'>
   <MyNavbar></MyNavbar>
     <MyBasketPage></MyBasketPage>

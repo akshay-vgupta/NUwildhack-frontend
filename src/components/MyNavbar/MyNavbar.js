@@ -28,7 +28,7 @@ const MyNavbar = () => {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <Link to="/home" class="nav-link text-light " aria-current="page" href="#">Home</Link>
+          <Link to="/home" class="nav-link text-light" aria-current="page" href="#">Home</Link>
         </li>
         <li class="nav-item">
           <Link to='/mybasket' class="nav-link text-light" href="#">My Buckets</Link>
@@ -39,7 +39,7 @@ const MyNavbar = () => {
       </ul>
     </div>
     <div class="d-flex">
-      <button type="button" class="btn text-light">Funds: {funds}</button>
+      <button type="button" class="btn text-light">Funds: ${funds}</button>
       <Link to="/stocks" class="btn text-light">All Stocks</Link>
       <Link to="/login" type="button" class="btn text-light">Logout</Link>
     </div>
