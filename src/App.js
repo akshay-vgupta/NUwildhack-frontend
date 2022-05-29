@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import LandingPage from './components/LandingPage/LandingPage';
 import MyBasketPage from './components/MyBasketPage/MyBasketPage';
 import PrivateRouteVendor from './components/PrivateRouteVendor/PrivateRouteVendor';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (

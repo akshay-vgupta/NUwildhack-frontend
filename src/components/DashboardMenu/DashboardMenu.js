@@ -33,7 +33,7 @@ return (
   <div class="menu-dashboard">
   <ul class="nav nav-pills">
       <li class="nav-item">
-        <a class="nav-link text-dark" id="1" aria-current="page" href="#" onClick={e => showall(e)} data-value="explore">Explore</a>
+        <a class="nav-link text-dark" id="1" aria-current="page" href="#" onClick={e => showall(e)} data-value="explore" >Explore</a>
       </li>
 
       <li class="nav-item">
@@ -43,7 +43,7 @@ return (
         <a class="nav-link text-dark" id ="3" href="#" onClick={e => showall(e)} data-value="asset-managers">Asset Managers</a>
       </li>
     </ul>
-    { showExplore == 1 ? <ExploreAll></ExploreAll> : showExplore == 2 ? <AllBasketsMenu></AllBasketsMenu> : showExplore ==3 ? <AssetManagers></AssetManagers>:null
+    { showExplore == 1 ? <ExploreAll setShowExplore={setShowExplore}></ExploreAll> : showExplore == 2 ? <AllBasketsMenu></AllBasketsMenu> : showExplore ==3 ? <AssetManagers></AssetManagers>:null
       
     }
    

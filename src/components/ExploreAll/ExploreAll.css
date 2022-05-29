@@ -5,3 +5,6 @@
 .explore{
     display: flex;
 }
+.card-img-size{
+    object-fit: scale-down;
+}
