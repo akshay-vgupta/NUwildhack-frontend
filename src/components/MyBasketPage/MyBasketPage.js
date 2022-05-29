@@ -27,18 +27,19 @@ const MyBasketPage = () =>{
         <div class="list-group">
           {mybaskets.data.map(item=>(
             <a href="#" class="list-group-item list-group-item-action">
+              
             <div class="image-basket-container">
-                <img src={item.imageurl} class="img-thumbnail" alt="..."/>
+              <img src={item.imageurl} class="img-thumbnail" alt="..."/>
                 <div class="basket-content">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{item.name}</h5>
                     </div>
                     <p class="mb-1">{item.description}</p>
                     <div style={{textAlign:'left', color: '#808080'}}>{item.riskType}</div>
+                    <div style={{display:'flex', justifyContent:'space-evenly'}}>
+                {item.stocks.map(stock=>(<div>&#9642; Stock:{stock[0]} and Quantity: {stock[1]}</div>))}
                 </div>
-                {item.stocks.map(stock=>(
-                        <p>&#9642; {stock}</p>
-                ))}
+                </div>
             </div>
             </a>
             ))}

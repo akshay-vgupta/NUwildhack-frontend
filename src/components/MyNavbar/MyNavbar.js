@@ -6,7 +6,7 @@ import axios from 'axios'
 const MyNavbar = () => {
   const [funds,setFunds] = useState(null)
   setTimeout(()=>{
-    axios.get('http://localhost:5000/userprofile/az@yop',{
+    axios.get('http://127.0.0.1:5000/userprofile/az@yop',{
       headers : {'Access-Control-Allow-Origin':'*',
     },
       crossorigin:true

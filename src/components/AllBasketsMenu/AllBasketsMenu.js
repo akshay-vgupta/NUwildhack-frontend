@@ -8,6 +8,7 @@ import {useEffect} from 'react';
 import axios from 'axios'
 const AllBasketsMenu = () => {
   const [show, setShow] = useState(false);
+  const [item,setItem] = useState(-1)
   const [baskets, setBaskets] = useState([]);
   useEffect(()=>{
     axios.get('http://localhost:5000/baskets',{
@@ -22,10 +23,36 @@ const AllBasketsMenu = () => {
     })
 
   }, [])
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = (item) => {
+    setShow(false);
+  }
+  const handleShow = (e) => 
+  {setShow(true);
+    console.log(e.currentTarget.getAttribute('index'))
+    setItem(e.currentTarget.getAttribute('index'))
+  }
   const setCheck = e =>{
     
+  }
+  const handlesubmit = (e) =>{
+    const json = {
+      email: 'az@yop',
+      basketid:baskets.data[item].id,
+      quantity:'1'
+    }
+    console.log(json)
+    axios.post('http://localhost:5000/investedbaskets',json,{
+      headers: {
+        // Overwrite Axios's automatically set Content-Type
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      setShow(false);
+    }, (error) => {
+      console.log(error);
+    });
   }
   return baskets.data?(
   <div class="all-baskets" id="all-baskets">
@@ -41,24 +68,25 @@ const AllBasketsMenu = () => {
             </ul>
         </div>
   </div> 
-      <Modal show={show} onHide={handleClose}>
+      {baskets.data[item]?(<Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{baskets.data[item].name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>{baskets.data[item].description}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="primary" onClick={(e)=>{handlesubmit(e)}}>
+            Buy This Basket
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal>):null
+}
     <div class="basket-wrapper">
         <div class="list-group">
-          {baskets.data.map(item=>(
-            <a href="#" class="list-group-item list-group-item-action" onClick={handleShow}>
+          {baskets.data.map((item,index)=>(
+            <a href="#" index={index} class="list-group-item list-group-item-action" onClick={(e) => handleShow(e)}>
             <div class="image-basket-container">
                 <img src={item.imageurl} class="img-thumbnail" alt="..."/>
                 <div class="basket-content">
@@ -66,7 +94,7 @@ const AllBasketsMenu = () => {
                         <h5 class="mb-1">{item.name}</h5>
                     </div>
                     <p class="mb-1">{item.description}</p>
-                    <div style={{textAlign:'left', color: '#808080'}}>{item.riskType}</div>
+                    <div style={{textAlign:'left', color: '#808080'}}>{item.id}</div>
                 </div>
             </div>
             </a>
