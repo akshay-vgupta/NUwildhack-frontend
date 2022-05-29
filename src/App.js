@@ -8,19 +8,32 @@ import DashboardMenu from './components/DashboardMenu/DashboardMenu';
 import ExploreAll from './components/ExploreAll/ExploreAll';
 import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import StockList from './components/StockList/StockList';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import LandingPage from './components/LandingPage/LandingPage';
+import MyBasketPage from './components/MyBasketPage/MyBasketPage';
 
 function App() {
   return (
     <Router>
     <div className="App">
-  
-  <MyNavbar></MyNavbar>
     <Switch>
-      <Route extact path ='/Home' >
+      <Route extact path ='/home' >
+      <MyNavbar></MyNavbar>
       <DashboardMenu/>
       </Route>
   <Route extact path ='/stocks'>
+  <MyNavbar></MyNavbar>
     <StockList></StockList>
+  </Route>
+  <Route extact path ='/login' >
+      <PrivateRoute/>
+  </Route>
+  <Route extact path ='/mybasket'>
+  <MyNavbar></MyNavbar>
+    <MyBasketPage></MyBasketPage>
+  </Route>
+  <Route extact path ='/'>
+    <LandingPage></LandingPage>
   </Route>
   </Switch>
     </div>

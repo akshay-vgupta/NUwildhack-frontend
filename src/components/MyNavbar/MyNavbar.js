@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './MyNavbar.css';
-
-const MyNavbar = () => (
+import {Link} from 'react-router-dom';
+import axios from 'axios'
+const MyNavbar = () => {
+  const [funds,setFunds] = useState(null)
+  setTimeout(()=>{
+    axios.get('http://localhost:5000/userprofile/az@yop',{
+      headers : {'Access-Control-Allow-Origin':'*',
+    },
+      crossorigin:true
+    }).then(response => {
+      //console.log("**SUCCdSS in get profile", response.data['az@yop'].funds)
+      setFunds( response.data['az@yop'].funds)
+     // console.log("fsdhgfh",funds)
+    }).catch(error => {
+      console.log(error)
+    })
+  }, 2000)
+  return(
   <nav class="navbar navbar-expand-xl">
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="#">StockBasket</a>
@@ -12,10 +28,10 @@ const MyNavbar = () => (
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-light " aria-current="page" href="#">Home</a>
+          <Link to="/home" class="nav-link text-light " aria-current="page" href="#">Home</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">Discover</a>
+          <Link to='/mybasket' class="nav-link text-light" href="#">My Buckets</Link>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="#">WatchList</a>
@@ -23,14 +39,14 @@ const MyNavbar = () => (
       </ul>
     </div>
     <div class="d-flex">
-      <button type="button" class="btn text-light">Current Number of Baskets</button>
-      <button type="button" class="btn text-light">All Stocks</button>
-      <button type="button" class="btn text-light">Logout</button>
+      <button type="button" class="btn text-light">Funds: {funds}</button>
+      <Link to="/stocks" class="btn text-light">All Stocks</Link>
+      <Link to="/login" type="button" class="btn text-light">Logout</Link>
     </div>
   </div>
 </nav>
 );
-
+  }
 MyNavbar.propTypes = {};
 
 MyNavbar.defaultProps = {};
