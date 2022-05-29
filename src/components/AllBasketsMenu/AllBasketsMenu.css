@@ -1,0 +1,18 @@
+.basket-wrapper{
+    padding: 10px;
+
+}
+.filter-wrapper{
+    text-align: left;
+    padding: 10px;
+}
+.basket-content{
+    padding-left: 20px;
+}
+.image-basket-container{
+    display: flex;
+}
+.all-baskets{
+    display: flex;
+    flex-direction: column;
+}
